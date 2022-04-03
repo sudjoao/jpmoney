@@ -40,3 +40,10 @@ export const Container = styled.form`
         }
     }
 `
+
+export const TransactionTypeContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 1rem 0;
+`
