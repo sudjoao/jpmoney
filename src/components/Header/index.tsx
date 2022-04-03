@@ -1,12 +1,16 @@
 import { Container, Content } from "./styles";
 import logoImg from "../../assets/logo.svg";
 
-export function Header() {
+interface IHeaderProps{
+    onOpenNewTransactionModal: () => void
+}
+
+export function Header({ onOpenNewTransactionModal} : IHeaderProps) {
     return (
         <Container>
             <Content>
                 <img src={logoImg} alt="jpmoney" />
-                <button>Nova transação</button>
+                <button onClick={onOpenNewTransactionModal}>Nova transação</button>
             </Content>
         </Container>
     )
