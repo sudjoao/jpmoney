@@ -4,6 +4,7 @@ import closeImg from "../../assets/close.svg";
 import { TransactionTypeButton } from "../TransactionTypeButton";
 import incomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
+import { useState } from "react";
 
 
 interface INewTransactionModalProps {
@@ -12,6 +13,7 @@ interface INewTransactionModalProps {
 }
 
 export function NewTransactionModal({ isOpen, onRequestClose }: INewTransactionModalProps) {
+    const [transactionType, setTransactionType] = useState("deposit")
     return (
         <Modal
             isOpen={isOpen}
@@ -32,8 +34,18 @@ export function NewTransactionModal({ isOpen, onRequestClose }: INewTransactionM
                 <input type="number" placeholder="Preço" />
                 <input type="text" placeholder="Categoria" />
                 <TransactionTypeContainer>
-                    <TransactionTypeButton type="income" onButtonPressed={() => { }} img={incomeImg} />
-                    <TransactionTypeButton type="outcome" onButtonPressed={() => { }} img={outcomeImg} />
+                    <TransactionTypeButton
+                        type="deposit"
+                        onButtonPressed={() => { setTransactionType('deposit') }}
+                        img={incomeImg}
+                        isSelected={transactionType === "deposit"}
+                    />
+                    <TransactionTypeButton
+                        type="withdraw"
+                        onButtonPressed={() => { setTransactionType('withdraw') }}
+                        img={outcomeImg}
+                        isSelected={transactionType === "withdraw"} 
+                    />
                 </TransactionTypeContainer>
                 <button type="submit">Cadastrar</button>
             </Container>
